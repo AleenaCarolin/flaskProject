@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Booking</title>
+</head>
+<body>
+<h2>Add Booking</h2>
+<form method="post" action="{{url_for('addBooking')}}">
+  <p>Customer Name</p>
+  <input type="text" name="name" placeholder="Enter Name"/>
+  <p>Flight Number</p>
+  <input type="text" name="flightno" placeholder="Enter Flight Number"/>
+  <p>Destination</p>
+
+  <select name="destination">
+
+    {% for destination in destinations %}
+    <option name="{{destination}}">{{destination}}</option>
+    {% endfor %}
+  </select>
+
+  <p>Price</p>
+  <input type="number" name="price" placeholder="Enter price"/>
+
+  <button type="submit">Add Booking</button>
+</form>
+</body>
+</html>

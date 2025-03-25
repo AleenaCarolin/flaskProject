@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FLight Bookings</title>
+</head>
+<body>
+
+<h2>Flight Bookings</h2>
+  <table>
+    <tr>
+      <th>Booking ID</th>
+      <th>Name</th>
+      <th>Flight Number</th>
+      <th>Destination</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+     {% for booking in bookings %}
+     <tr>
+       <td>{{booking["bookingid"]}}</td>
+       <td>{{booking["name"]}}</td>
+       <td>{{booking["flightno"]}}</td>
+       <td>{{booking["Destination"]}}</td>
+       <td>{{booking["price"]}}</td>
+
+       <td><a href="{{url_for('editbooking', id= booking['bookingid'] )}}">Edit</a> </td>
+       <td><a href="{{url_for('deletebooking', id = booking['bookingid'] )}}">Delete</a> </td>
+     </tr>
+    {% endfor %}
+  </table>
+
+<br>
+<hr>
+<br>
+  <a href="{{url_for('addBooking')}}">Add new booking</a>
+
+</body>
+</html>
