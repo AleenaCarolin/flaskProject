@@ -1,5 +1,3 @@
-from operator import index
-
 from flask import Flask, render_template, request , url_for
 from werkzeug.utils import redirect
 
@@ -10,7 +8,7 @@ Destinations =("UK","Australia","France","Indonesia","Italy","Japan")
 
 bookings = [
     {"bookingid":1,"name":"Alice Joy","flightno":"FB1001","Destination":"Australia","price":5000},
-    {"bookingid":2,"name":"Bob","flightno":"FB1002","Destination":"US","price":6000}
+    {"bookingid":2,"name":"Bob","flightno":"FB1002","Destination":"UK","price":6000}
 
 ]
 
@@ -35,7 +33,7 @@ def addBooking():
         newbooking = {"bookingid":bid,"name":name,"flightno":flightnumber,"Destination":dest,"price":price}
         bookings.append(newbooking)
 
-        return render_template("index.html",bookings =bookings, destinations = Destinations)
+        return redirect(url_for("home"))
     return render_template("addbooking.html",bookings =bookings, destinations = Destinations)
 
 @app.route("/editbooking/<id>", methods =["POST", "GET"])

@@ -25,6 +25,7 @@
        <td>{{booking["price"]}}</td>
 
        <td><a href="{{url_for('editbooking', id= booking['bookingid'] )}}">Edit</a> </td>
+
        <td><a href="{{url_for('deletebooking', id = booking['bookingid'] )}}">Delete</a> </td>
      </tr>
     {% endfor %}
