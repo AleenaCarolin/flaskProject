@@ -1,4 +1,4 @@
-FROM python 3.19
+FROM python:3.19
 
 WORKDIR /app
 
