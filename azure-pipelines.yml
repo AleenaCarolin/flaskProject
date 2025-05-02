@@ -28,9 +28,12 @@ stages:
       displayName: Build an image
       inputs:
         command: build
+        repository: $(imageName)   
         dockerfile: '$(Build.SourcesDirectory)/dockerfile'
         tags: |
           latest
+         buildContext: '$(Build.SourcesDirectory)'
+
     - script: |
          docker rm -f $(containerName) || true
       displayName: 'Remove existing container if it exists'
