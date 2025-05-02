@@ -32,7 +32,7 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/dockerfile'
         tags: |
           latest
-         buildContext: '$(Build.SourcesDirectory)'
+        buildContext: '$(Build.SourcesDirectory)'
 
     - script: |
          docker rm -f $(containerName) || true
