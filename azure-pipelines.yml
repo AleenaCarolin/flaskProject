@@ -1,0 +1,41 @@
+# Docker
+# Build a Docker image
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+ branches:
+   include:
+     - main
+
+resources:
+- repo: self
+
+variables: 
+  imageName: 'flaskapp'
+  containerName: 'flaskapp-container'
+  appPort: '5000' 
+
+stages:
+- stage: Build
+  displayName: Build image
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      name: SelfHostedPool
+    steps:
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        command: build
+        dockerfile: '$(Build.SourcesDirectory)/dockerfile'
+        tags: |
+          latest
+    - script: |
+         docker rm -f $(containerName) || true
+      displayName: 'Remove existing container if it exists'
+ 
+    - script: |
+        echo "Running Docker container."
+        docker run -d -p $(appPort):$(appPort) --name $(containerName) $(imageName):latest
+      displayName: 'Run Docker Container'
