@@ -7,7 +7,7 @@ app = Flask(__name__)
 Destinations =("UK","Australia","France","Indonesia","Italy","Japan")
 
 bookings = [
-    {"bookingid":1,"name":"Abram","flightno":"FB1001","Destination":"Australia","price":5000},
+    {"bookingid":1,"name":"Abram Qureshi","flightno":"FB1001","Destination":"Australia","price":5000},
     {"bookingid":2,"name":"Bob","flightno":"FB1002","Destination":"UK","price":6000}
 
 ]
